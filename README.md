@@ -6,83 +6,87 @@ A modern blog management system built using **Laravel** and powered by the **Fil
 
 ## ✨ Features
 
-- Create, edit, and delete blog posts
-- Admin panel using Filament
-- Category and tag management
-- Image upload with storage support
-- SEO-friendly URLs
-- User authentication (admin/user roles)
-- Responsive frontend layout
-- Post publishing status (draft/published)
-- Created and updated timestamps
-- ⚙️ Powered by Firefly Blog plugin (https://filamentphp.com/plugins/firefly-blog)
+* Create, edit, and delete blog posts
+* Admin panel using Filament
+* Category and tag management
+* Image upload with storage support
+* SEO-friendly URLs
+* User authentication (admin/user roles)
+* Responsive frontend layout
+* Post publishing status (draft/published)
+* Created and updated timestamps
+* ⚙️ Powered by [Firefly Blog plugin](https://filamentphp.com/plugins/firefly-blog)
+
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Laravel 10+
-- **Admin Panel:** Filament PHP
-- **Frontend:** Blade (Bootstrap/TailwindCSS)
-- **Database:** MySQL / SQLite
-- **Authentication:** Laravel Breeze / Fortify
-- **Storage:** Laravel Filesystem
+* **Framework:** Laravel 10+
+* **Admin Panel:** Filament PHP
+* **Frontend:** Blade (Bootstrap/TailwindCSS)
+* **Database:** MySQL / SQLite
+* **Authentication:** Laravel Breeze / Fortify
+* **Storage:** Laravel Filesystem
 
 ---
 
 ## Installation
-1. Clone the project:
 
-   ```bash
-   git clone 
-   cd blog-filament-firefly
-   ```
+1.  **Clone the project:**
 
-2. Install dependencies:
-```
+    ```bash
+    git clone <repository_url> # Replace <repository_url> with the actual URL
+    cd blog-filament-firefly
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
     composer install
-  ```
+    ```
 
-3. Copy .env file and configure:
-```
+3.  **Copy .env file and configure:**
+
+    ```bash
     cp .env.example .env
     php artisan key:generate
-```
-4.  Run migrations:
-```
+    ```
+
+4.  **Run migrations:**
+
+    ```bash
     php artisan migrate
-```
-5. Install Filament:
-```
+    ```
+
+5.  **Install Filament:**
+
+    ```bash
     composer require filament/filament:"^3.3" -W
-```
-```
     php artisan filament:install --panels
-```
-6. Create a user
-     ```
+    ```
+
+6.  **Create a user:**
+
+    ```bash
     php artisan make:filament-user
-```
-
-7. Install Plugin follow the firefly guide
-
-```
-    https://filamentphp.com/plugins/firefly-blog
-```
-8. Run 
-
-  
-    ```
-        php artisan serve
-        
     ```
 
-9. Access:
+7.  **Install Firefly Blog Plugin:** Follow the guide on the [Firefly Blog plugin page](https://filamentphp.com/plugins/firefly-blog).
 
-    Frontend: http://localhost:8000
+8.  **Run the application:**
 
-    Admin Panel: http://localhost:8000/admin
+    ```bash
+    php artisan serve
+    ```
 
-## Notes 
+9.  **Access:**
 
-- I used this project to help me understand how Filament works. After learning the basics, I customized it to fit    my needs. This hands-on method was how I learned.
-- Learning is always free — but it takes passion and persistence. Never give up.
+    * **Frontend:** `http://localhost:8000`
+    * **Admin Panel:** `http://localhost:8000/admin`
+
+---
+
+## Notes
+
+* I used this project to help me understand how Filament works. After learning the basics, I customized it to fit my needs. This hands-on method was how I learned.
+* Learning is always free — but it takes passion and persistence. Never give up.

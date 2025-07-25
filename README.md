@@ -19,6 +19,16 @@ A modern blog management system built using **Laravel** and powered by the **Fil
 
 ---
 
+# My Awesome Blog Admin Panel
+
+Here's a look at the Filament admin panel:
+
+![Filament Admin Panel Dashboard](/public/images/image-example.png)
+
+This is where you manage your posts, categories, and tags.
+
+---
+
 ## 🛠️ Tech Stack
 
 * **Framework:** Laravel 10+

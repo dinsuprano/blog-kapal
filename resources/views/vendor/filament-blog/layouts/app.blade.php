@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ $setting?->faviconImage }}" type="image/x-icon" />
+    {{-- <title>Airworthiness Forum</title> --}}
     {!! \Firefly\FilamentBlog\Facades\SEOMeta::generate() !!}
     {!! $setting?->google_console_code !!}
     {!! $setting?->google_analytic_code !!}
@@ -242,7 +243,7 @@
                 </div>
                 <div class="mt-7 flex flex-wrap items-start justify-center gap-10 border-t border-slate-200 pt-5">
                     <div class="text-hurricane/50 text-sm font-medium">
-                        © 2024 {{ $setting->organization_name ?? 'Firefly Blog' }}. All rights reserved.
+                        © 2025 {{ $setting->organization_name ?? 'Airworthiness Forum' }}. All rights reserved.
                     </div>
                 </div>
             </div>

@@ -1,4 +1,6 @@
+
 <x-blog-layout>
+
     @if(count($posts))
     <section class="py-8">
         <div class="container mx-auto">

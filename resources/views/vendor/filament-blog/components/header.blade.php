@@ -1,17 +1,21 @@
-@props(['title' =>'Firefly Blog', 'logo' => null] )
+@props(['title' =>'Airworthiness', 'logo' => null] )
 <header @click.outside="showSearchModal = false" x-data="{ showSearchModal: false }" class="sticky top-0 z-[94035] mb-4">
     <div class="py-4 bg-white border-b">
         <div class="container mx-auto">
             <div class="flex justify-between gap-x-4">
                 <div class="flex items-center gap-x-10">
                     <a href="{{config('filamentblog.route.home.url') ?? config('app.url')}}">
-                        @if($logo)
-                        <img src="{{ $logo }}" alt="{{ $title }}" class="max-h-[60px]" />
+                        {{-- @if($logo)
+                            <img src="{{ $logo }}" alt="{{ $title }}" class="max-h-[60px]" />
                         @else
                         <strong class="text-2xl  text-primary-600">
-                            {{ $title ?: 'Firefly Blog' }}
+                            {{ $title ?: 'Airworthiness Forum' }}
                         </strong>
-                        @endif
+                        @endif --}}
+                     <strong class="text-2xl text-blue-600">
+                        {{ $title ?: 'Airworthiness Forum' }}
+                    </strong>
+
                     </a>
                     <div class="hidden gap-x-10 sm:flex">
                         <a href="{{ route('filamentblog.post.index') }}" class="font-semibold text-md hover:text-primary-600">
@@ -28,6 +32,7 @@
                                 <x-blog-header-category />
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="flex items-center ml-auto gap-x-10">

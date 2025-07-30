@@ -53,17 +53,19 @@
                                         {!! tiptap_converter()->asHTML($post->body, toc: true, maxDepth: 3) !!}
                                     </article>
 
-                                    @if($post->tags->count())
+                                   
                                     <div class="pt-10">
                                         <span class="mb-3 block font-semibold">Tags</span>
                                         <div class="space-x-2 space-y-1">
 
-                                            @foreach ($post->tags as $tag)
-                                                <a href="{{ route('filamentblog.tag.post', ['tag' => $tag->slug]) }}" class="rounded-full border border-slate-300 px-3 py-1 text-sm font-mediumtext-slate-600 hover:bg-slate-100">
-                                                    {{ $tag->name }}
-                                                </a>
-                                            @endforeach
-
+                                            @if($post->tags->count())
+                                                @foreach ($post->tags as $tag)
+                                                    <a href="{{ route('filamentblog.tag.post', ['tag' => $tag->slug]) }}" class="rounded-full border border-slate-300 px-3 py-1 text-sm font-mediumtext-slate-600 hover:bg-slate-100">
+                                                        {{ $tag->name }}
+                                                    </a>
+                                                @endforeach
+                                            @endif
+                                            
                                             @foreach ($post->categories as $category)
                                                 <a href="{{ route('filamentblog.category.post', ['category' => $category->slug]) }}">
                                                     <span class="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-600 hover:bg-slate-100">{{ $category->name }}
@@ -73,8 +75,7 @@
 
                                         </div>
                                     </div>
-                                    @endif
-
+                           
                                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
                                     <div class="pt-10">
                                         <span class="mb-3 block font-semibold">Share this link</span>

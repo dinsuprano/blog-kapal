@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable,HasBlog;
+    use HasFactory, Notifiable, HasBlog;
 
     /**
      * The attributes that are mass assignable.

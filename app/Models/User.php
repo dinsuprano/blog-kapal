@@ -23,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path',
+        'description',
+        'url_link'
     ];
 
     /**
@@ -64,4 +67,13 @@ class User extends Authenticatable
         // your conditional logic here
         return true;
     }
+
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->profile_photo_path
+            ? asset('storage/' . $this->profile_photo_path)
+            : 'https://ui-avatars.com/api/?name=' . urlencode($this->name);
+    }
+
+
 }

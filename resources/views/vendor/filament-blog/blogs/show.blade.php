@@ -103,12 +103,23 @@
                                         <img class="h-14 w-14 rounded-full border-4 border-white bg-zinc-300 object-cover ring-1 ring-slate-300" 
                                                 src="{{ $post->user->avatar }}" alt="{{ $post->user->name() }}" alt="avatar">
                                         <span class="font-semibold text-lg" title="{{ $post->user->name() }}" >{{ $post->user->name() }}</span>
+                                        
+                                        @if($post->user->url_link)
+                                            <a class="text-xl text-blue-600 hover:text-blue-800" 
+                                            href="{{ $post->user->url_link }}" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            aria-label="Share on LinkedIn">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                            </a>
+                                        @endif
                                     </div>
 
                                     <!-- Description Below -->
                                     <p class="text-gray-500 text-sm leading-relaxed">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        {{-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. --}}
+                                        {{ $post->user->description ?? 'No description available.' }}
                                     </p>
                                 </article>
                             </div>

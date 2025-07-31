@@ -12,7 +12,7 @@
                 <div>
                     @foreach ($post->categories as $category)
                     <a href="{{ route('filamentblog.category.post', ['category' => $category->slug]) }}">
-                        <span class="bg-primary-200 text-primary-800 mr-2 inline-flex rounded-full px-2 py-1 text-xs font-semibold">{{ $category->name }}
+                        <span class="bg-red-200 text-red-800 mr-2 inline-flex rounded-full px-2 py-1 text-xs font-semibold">{{ $category->name }}
                         </span>
                     </a>
                     @endforeach

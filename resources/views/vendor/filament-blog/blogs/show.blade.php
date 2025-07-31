@@ -77,13 +77,29 @@
                                     </div>
                            
                                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+                                    @php
+                                        $url = urlencode(route('filamentblog.post.show', $post->slug));
+                                        $title = urlencode($post->title);
+                                    @endphp
+                                    {{-- Share Links --}}                           
                                     <div class="pt-10">
                                         <span class="mb-3 block font-semibold">Share this link</span>
                                         <div class="space-x-4 space-y-2 text-xl">
-                                            <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                                            <a href="#" aria-label="Share via Email"><i class="fa-solid fa-envelope"></i></i></a>
-                                            <a href="#" aria-label="Copy Link"><i class="fa-solid fa-link"></i></a>
+                                            {{-- Facebook --}}
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}" target="_blank" aria-label="Share on Facebook">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+
+                                            {{-- LinkedIn --}}
+                                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}" target="_blank" aria-label="Share on LinkedIn">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                            </a>
+
+                                            {{-- Copy link --}}
+                                            <a href="#" onclick="navigator.clipboard.writeText('{{ route('filamentblog.post.show', $post->slug) }}'); alert('Link copied!')" aria-label="Copy Link">
+                                                <i class="fa-solid fa-link"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

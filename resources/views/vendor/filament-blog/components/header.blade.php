@@ -5,16 +5,16 @@
             <div class="flex justify-between gap-x-4">
                 <div class="flex items-center gap-x-10">
                     <a href="{{config('filamentblog.route.home.url') ?? config('app.url')}}">
-                        {{-- @if($logo)
+                        @if($logo)
                             <img src="{{ $logo }}" alt="{{ $title }}" class="max-h-[60px]" />
                         @else
                         <strong class="text-2xl  text-primary-600">
                             {{ $title ?: 'Airworthiness Forum' }}
                         </strong>
-                        @endif --}}
-                     <strong class="text-2xl text-blue-600">
+                        @endif
+                     {{-- <strong class="text-2xl text-blue-600">
                         {{ $title ?: 'Airworthiness Forum' }}
-                    </strong>
+                    </strong> --}}
 
                     </a>
                     <div class="hidden gap-x-10 sm:flex">

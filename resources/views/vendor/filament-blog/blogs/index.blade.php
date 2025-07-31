@@ -1,20 +1,26 @@
-
 <x-blog-layout>
 
     @if(count($posts))
     <section class="py-8">
+        <div class="container mx-auto mb-12">
+            <header class="text-left">
+                <h1 class="text-4xl font-extrabold text-gray-900 mb-3">Airworthiness Forum</h1>
+                <p class="text-lg text-gray-600 max-w-2xl">
+                    Latest news, expert tips, and guides on airworthiness and aviation safety compliance.
+                </p>
+            </header>
+        </div>
+
+        {{-- Hero Post --}}
         <div class="container mx-auto">
-            <div class="">
-                {{-- Hero Post      --}}
-                @foreach ($posts->take(1) as $post)
-                <div>
-                    <x-blog-feature-card :post="$post" />
-                </div>
-                @endforeach
-                {{-- Hero Post      --}}
+            @foreach ($posts->take(1) as $post)
+            <div>
+                <x-blog-feature-card :post="$post" />
             </div>
+            @endforeach
         </div>
     </section>
+
     <section class="pb-16 pt-8">
         <div class="container mx-auto">
             <div class="grid sm:grid-cols-3 gap-x-14 gap-y-14">
@@ -33,11 +39,11 @@
         </div>
     </section>
     @else
-    <div class="container  mx-auto">
-        <div class="flex justify-center">
-            <p class="text-2xl font-semibold text-gray-300">No posts found</p>
+        <div class="container mx-auto py-12">
+            <div class="flex justify-center">
+                <p class="text-2xl font-semibold text-gray-300">No posts found</p>
+            </div>
         </div>
-    </div>
     @endif
 
 </x-blog-layout>

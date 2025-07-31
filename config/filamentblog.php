@@ -38,7 +38,7 @@ return [
     ],
     'seo' => [
         'meta' => [
-            'title' => 'Naim Blog',
+            'title' => 'Airworthiness Forum',
             'description' => 'This is filament blog seo meta description',
             'keywords' => [],
         ],

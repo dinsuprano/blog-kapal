@@ -176,27 +176,27 @@
         </main>
 
         <!-- Footer -->
-        <footer class="mt-10 w-full border-t px-5 py-12">
+        <footer class="mt-10 w-full border-t px-5 py-12 bg-[#0097b2]">
             <div class="container mx-auto">
                 <div class="mb-4">
                     <div class="grid justify-between gap-x-10 gap-y-10 sm:grid-cols-3">
                         <div class="flex flex-col items-start gap-3 py-3">
-                            <h4 class="text-xl font-semibold">{{ $setting?->title }}</h4>
-                            <p class="text-base">
+                            <h4 class="text-xl font-semibold text-white">{{ $setting?->title }}</h4>
+                            <p class="text-base text-white">
                                 {{ $setting?->description }}
                             </p>
                         </div>
                         <div class="grid sm:grid-cols-2 col-span-2">
                             <div class="md:flex md:flex-col grid gap-3 py-3 text-sm font-medium">
-                                <h4 class="text-xl font-semibold">Quick Links</h4>
-                                @forelse($setting->quick_links ?? [] as $link)
+                                <h4 class="text-xl font-semibold"></h4>
+                                {{-- @forelse($setting->quick_links ?? [] as $link)
                                     <a href="{{ $link['url'] }}"
                                         class="transition duration-300 will-change-transform hover:translate-x-1 hover:text-black motion-reduce:transition-none motion-reduce:hover:transform-none">
                                         {{ $link['label'] }}
                                     </a>
                                 @empty
                                     <p class="font-semibold text-gray-300">No links found</p>
-                                @endforelse
+                                @endforelse --}}
                             </div>
                             <div class="flex flex-col items-start gap-3 text-sm font-medium">
                                 <div class="relative overflow-hidden rounded-2xl bg-slate-100 px-6 py-4 text-black">
@@ -242,7 +242,7 @@
                     </div>
                 </div>
                 <div class="mt-7 flex flex-wrap items-start justify-center gap-10 border-t border-slate-200 pt-5">
-                    <div class="text-hurricane/50 text-sm font-medium">
+                    <div class="text-hurricane/50 text-sm font-medium text-white">
                         © 2025 {{ $setting->organization_name ?? 'Airworthiness Forum' }}. All rights reserved.
                     </div>
                 </div>

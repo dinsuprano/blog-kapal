@@ -1,8 +1,18 @@
 <?php
-// queue-worker.php
 
-// Change to project directory
-chdir(__DIR__);
+use Illuminate\Contracts\Console\Kernel;
 
-// Run Laravel queue worker once
-passthru('php artisan queue:work --once --sleep=3 --tries=3');
+require __DIR__ . '/vendor/autoload.php';
+
+$app = require_once __DIR__ . '/bootstrap/app.php';
+
+$kernel = $app->make(Kernel::class);
+
+// Run the queue:work command directly in PHP
+$kernel->call('queue:work', [
+    '--once' => true,
+    '--sleep' => 3,
+    '--tries' => 3,
+]);
+
+echo "Queue jobs processed successfully!";

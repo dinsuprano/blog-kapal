@@ -15,7 +15,7 @@ use Firefly\FilamentBlog\Models\User;
 
 return [
     'tables' => [
-        'prefix' => '', // prefix for all blog tables
+        'prefix' => 'fblog_', // prefix for all blog tables
     ],
     'route' => [
         'prefix' => '/blog',

@@ -15,7 +15,7 @@ use Firefly\FilamentBlog\Models\User;
 
 return [
     'tables' => [
-        'prefix' => 'fblog_', // prefix for all blog tables
+        'prefix' => '', // prefix for all blog tables
     ],
     'route' => [
         'prefix' => '/blog',
@@ -39,7 +39,7 @@ return [
     'seo' => [
         'meta' => [
             'title' => 'Airworthiness Forum',
-            'description' => 'This is filament blog seo meta description',
+            'description' => 'Latest news, expert tips, and guides on airworthiness and aviation safety compliance.',
             'keywords' => [],
         ],
     ],

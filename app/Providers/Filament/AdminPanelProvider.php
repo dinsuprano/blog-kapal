@@ -28,10 +28,10 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            // ->registration()
             ->profile()
             ->brandName('Airworthiness Forum')
-            ->favicon(asset('images/favicon.png'))
+            ->favicon(asset('images/icon.png'))
             ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
@@ -68,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
                 Blog::make()
 
             ]);
+            
             
             
     }

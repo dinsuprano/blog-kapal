@@ -31,12 +31,26 @@ This is where you manage your posts, categories, and tags.
 
 ## 🛠️ Tech Stack
 
-* **Framework:** Laravel 10+
-* **Admin Panel:** Filament PHP
-* **Frontend:** Blade (Bootstrap/TailwindCSS)
-* **Database:** MySQL / SQLite
-* **Authentication:** Laravel Breeze / Fortify
+* **Framework:** Laravel 12
+* **Admin Panel:** Filament PHP v3.3
+* **Frontend:** Blade Templates + TailwindCSS
+* **Database:** SQLite (configurable to MySQL/PostgreSQL)
+* **Authentication:** Laravel Auth + Filament
+* **Blog Engine:** Firefly Blog Plugin v2.0
+* **Rich Text:** TipTap Editor
+* **UI Components:** Livewire + Alpine.js
+* **Asset Building:** Vite
 * **Storage:** Laravel Filesystem
+
+---
+
+## 📚 Documentation
+
+For detailed information about how the system works:
+
+* **[Technical Overview](TECHNICAL_OVERVIEW.md)** - Architecture, code structure, and integration details for developers
+* **[User Guide](USER_GUIDE.md)** - Complete guide for admins and end users
+* **[Installation Guide](#installation)** - Setup instructions (see below)
 
 ---
 
@@ -93,6 +107,138 @@ This is where you manage your posts, categories, and tags.
 
     * **Frontend:** `http://localhost:8000`
     * **Admin Panel:** `http://localhost:8000/admin`
+
+---
+
+---
+
+## 🏗️ How It Works
+
+### System Architecture
+
+This blog system is built with a modern, layered architecture that separates concerns and provides a clean, maintainable codebase:
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │  Admin Panel    │    │   Database      │
+│   (Blade Views) │    │   (Filament)    │    │   (SQLite)      │
+├─────────────────┤    ├─────────────────┤    ├─────────────────┤
+│ • Blog Posts    │◄──►│ • Content Mgmt  │◄──►│ • Posts         │
+│ • Categories    │    │ • User Mgmt     │    │ • Categories    │
+│ • Comments      │    │ • Media Upload  │    │ • Tags          │
+│ • User Profiles │    │ • SEO Settings  │    │ • Comments      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+        ▲                        ▲                        ▲
+        │                        │                        │
+        └──────────────── Laravel Framework ──────────────┘
+```
+
+### Key Components
+
+#### 1. **Laravel Framework** (Backend Foundation)
+- **Routes**: Handles URL routing, with main blog routes under `/blog` prefix
+- **Models**: Eloquent ORM models for data management
+- **Middleware**: Authentication and web security
+- **Service Providers**: Bootstrap application services
+
+#### 2. **Filament Admin Panel** (Content Management)
+- **Dashboard**: Centralized admin interface at `/admin`
+- **Resources**: CRUD operations for all content types
+- **Forms**: Rich form builder for content creation/editing
+- **Tables**: Data listing with search, filter, and pagination
+- **Widgets**: Statistics and quick actions dashboard
+
+#### 3. **Firefly Blog Plugin** (Blog Functionality)
+- **Post Management**: Create, edit, publish, and schedule posts
+- **Category System**: Organize content by categories
+- **Tag System**: Tag posts for better discoverability
+- **Comment System**: User engagement through comments
+- **SEO Features**: Meta tags, slugs, and search optimization
+
+#### 4. **User Management**
+- **Authentication**: Laravel's built-in auth system
+- **Roles**: Admin/user role separation
+- **Profiles**: User profiles with avatars and descriptions
+- **Social Links**: LinkedIn integration for author profiles
+
+### Data Flow
+
+#### Content Creation Workflow:
+```
+Admin Login → Filament Dashboard → Create Post → Add Content → 
+Set Categories/Tags → Upload Images → Publish → Frontend Display
+```
+
+#### User Interaction Workflow:
+```
+Visit Blog → Browse Posts → Read Article → Leave Comment → 
+View Author Profile → Browse Related Posts
+```
+
+### Database Structure
+
+The system uses a well-organized database schema with the `fblog_` prefix:
+
+- **fblog_posts**: Blog post content, metadata, and publishing status
+- **fblog_categories**: Post categorization
+- **fblog_tags**: Tagging system for posts
+- **fblog_comments**: User comments and discussions
+- **users**: User accounts and profiles
+
+### Technical Integration
+
+#### Frontend Integration:
+- **Blade Templates**: Server-side rendered views in `resources/views/vendor/filament-blog/`
+- **Livewire Components**: Interactive UI components for dynamic features
+- **TailwindCSS**: Utility-first CSS framework for styling
+- **Vite**: Asset bundling and development server
+
+#### Admin Integration:
+- **Filament Resources**: Auto-generated admin interfaces in `app/Filament/Resources/`
+- **Form Builder**: Dynamic form generation for content management
+- **Table Builder**: Automatic data tables with sorting and filtering
+- **File Upload**: Image management with automatic resizing
+
+#### Blog Plugin Integration:
+- **HasBlog Trait**: Added to User model for blog functionality
+- **Configuration**: Customizable settings in `config/filamentblog.php`
+- **Routes**: Automatic route registration under `/blog` prefix
+- **Views**: Customizable blog templates
+
+### Key Features Explained
+
+#### 1. **Content Management**
+- Rich text editor with image support
+- Draft/publish status management
+- SEO-friendly URL generation
+- Automatic excerpt generation
+
+#### 2. **User Experience**
+- Responsive design for all devices
+- Fast loading with optimized assets
+- Search functionality across content
+- Category and tag browsing
+
+#### 3. **Admin Experience**
+- Intuitive dashboard with statistics
+- Bulk operations for efficiency
+- Media library management
+- User and permission management
+
+#### 4. **Developer Experience**
+- Clean, extensible architecture
+- Well-documented configuration
+- Easy customization options
+- Comprehensive error handling
+
+### Configuration Options
+
+The system is highly configurable through `config/filamentblog.php`:
+
+- **Route Configuration**: Customize URL structure and middleware
+- **User Model**: Configure user relationships and columns
+- **SEO Settings**: Default meta tags and descriptions
+- **Security**: reCAPTCHA integration options
 
 ---
 

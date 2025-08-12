@@ -207,30 +207,50 @@
                                         <p class="mb-3 block text-slate-500">
                                             Subscribe to our mailing list to receive daily updates direct to your inbox!
                                         </p>
-                                        <div>
-                                            <form method="post" action="{{ route('filamentblog.post.subscribe') }}">
-                                                @csrf
+                                        <div x-data="{
+                                            email: '',
+                                            error: '',
+                                            success: '',
+                                            async subscribe() {
+                                                this.error = '';
+                                                this.success = '';
+                                                try {
+                                                    const response = await fetch('{{ route('filamentblog.post.subscribe') }}', {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                                            'Accept': 'application/json',
+                                                            'Content-Type': 'application/json'
+                                                        },
+                                                        body: JSON.stringify({ email: this.email })
+                                                    });
+                                                    const data = await response.json();
+                                                    if (response.ok) {
+                                                        this.success = data.message || 'Subscribed successfully!';
+                                                        this.email = '';
+                                                    } else if (data.errors && data.errors.email) {
+                                                        this.error = data.errors.email[0];
+                                                    } else {
+                                                        this.error = 'You have already subscribed';
+                                                    }
+                                                } catch (e) {
+                                                    this.error = 'You have already subscribed';
+                                                }
+                                            }
+                                        }">
+                                            <form @submit.prevent="subscribe">
                                                 <label hidden for="email-address">Email</label>
-                                                @error('email')
-                                                    <span class="text-xs text-red-500">{{ $message }}</span>
-                                                @enderror
-                                                <div class="w-100 relative">
-                                                    <input autocomplete="email"
-                                                        class="flex w-full items-center justify-between rounded-xl border bg-white px-6 py-5 font-medium text-black outline-none placeholder:text-black"
-                                                        name="email" value="{{ old('email') }}"
-                                                        placeholder="Enter your email" type="email">
+                                                <input x-model="email" name="email" type="email" required
+                                                    placeholder="Enter your email"
+                                                    class="flex w-full items-center justify-between rounded-xl border bg-white px-6 py-5 font-medium text-black outline-none placeholder:text-black">
                                                     <button type="submit"
-                                                        class="absolute right-4 top-1/2 -translate-y-1/2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-primary h-8 w-8"
-                                                            viewBox="0 0 256 256">
-                                                            <path fill="currentColor"
-                                                                d="m220.24 132.24l-72 72a6 6 0 0 1-8.48-8.48L201.51 134H40a6 6 0 0 1 0-12h161.51l-61.75-61.76a6 6 0 0 1 8.48-8.48l72 72a6 6 0 0 1 0 8.48" />
-                                                        </svg>
+                                                        class="mt-3 w-full rounded-xl bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary/90">
+                                                        Subscribe
                                                     </button>
-                                                </div>
-                                                @if (session('success'))
-                                                    <span class="text-green-500">{{ session('success') }}</span>
-                                                @endif
+                                                <div x-show="error" x-text="error"
+                                                    class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded"></div>
+                                                <div x-show="success" x-text="success"
+                                                    class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded"></div>
                                             </form>
                                         </div>
                                         <i

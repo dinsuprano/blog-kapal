@@ -18,6 +18,9 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Firefly\FilamentBlog\Blog;
+use App\Filament\Widgets\PostsChart;
+use App\Filament\Widgets\SubscribersChart;
+use App\Filament\Widgets\OverviewStats;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -49,6 +52,10 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
+                PostsChart::class,
+                SubscribersChart::class,
+                OverviewStats::class, // <-- Use this combined widget
+
             ])
             ->middleware([
                 EncryptCookies::class,

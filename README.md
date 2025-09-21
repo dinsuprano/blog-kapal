@@ -94,6 +94,14 @@ This is where you manage your posts, categories, and tags.
     * **Frontend:** `http://localhost:8000`
     * **Admin Panel:** `http://localhost:8000/admin`
 
+
+10.  **Storage Link:**
+
+    After running the migration, you can create a symbolic link to the storage directory by running the following command:
+    
+    ```
+    php artisan storage:link
+    ```
 ---
 
 ## Notes

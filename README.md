@@ -99,7 +99,7 @@ This is where you manage your posts, categories, and tags.
 
     After running the migration, you can create a symbolic link to the storage directory by running the following command:
     
-    ```
+    ```bash
     php artisan storage:link
     ```
 ---

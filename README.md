@@ -46,7 +46,7 @@ This is where you manage your posts, categories, and tags.
 
     ```bash
     git clone <repository_url> # Replace <repository_url> with the actual URL
-    cd blog-filament-firefly
+    cd <file_name>
     ```
 
 2.  **Install dependencies:**
@@ -97,10 +97,8 @@ This is where you manage your posts, categories, and tags.
 
 10.  **Storage Link:**
 
-    After running the migration, you can create a symbolic link to the storage directory by running the following command:
-    
     ```bash
-    php artisan storage:link
+    php artisan storage:link 
     ```
 ---
 

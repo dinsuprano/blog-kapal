@@ -29,8 +29,22 @@ Route::view('dashboard', 'dashboard')
 
 Route::get('/newsletter/unsubscribe', function (\Illuminate\Http\Request $request) {
     $token = $request->query('token');
-    $subscriber = NewsLetter::where('unsubscribe_token', $token)->firstOrFail();
-    return view('newsletter.unsubscribe', ['email' => $subscriber->email, 'token' => $token]);
+    $subscriber = NewsLetter::where('unsubscribe_token', $token)->first();
+
+    if ($subscriber) {
+        // Subscriber exists, show unsubscribe form
+        return view('newsletter.unsubscribe', [
+            'email' => $subscriber->email,
+            'token' => $token,
+        ]);
+    } else {
+        // Subscriber not found, show custom message/page
+        return view('newsletter.unsubscribe', [
+            'email' => null,
+            'token' => $token,
+            'success' => 'This email has already been unsubscribed or the link is invalid.',
+        ]);
+    }
 })->name('newsletter.unsubscribe');
 
 Route::post('/newsletter/unsubscribe/confirm', function (\Illuminate\Http\Request $request) {

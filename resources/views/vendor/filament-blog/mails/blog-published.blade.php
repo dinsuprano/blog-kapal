@@ -85,6 +85,11 @@
     </div>
     <div class="footer">
         <p>Thank you for subscribing to our blog updates!</p>
+        <p>
+            <a href="{{ route('newsletter.unsubscribe', ['token' => $unsubscribe_token]) }}">
+                Unsubscribe
+            </a>
+        </p>
     </div>
 </div>
 </body>
